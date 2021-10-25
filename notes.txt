@@ -1,0 +1,8 @@
+
+ 1. Create project folder:  mkdir auth-REST-API
+ 2. In project folder - Create initial package.json file: 
+    (The "-y" is just to accept all the default settings)
+        npm init -y   
+
+ 3. package.json - Change "main: index.js" to "main: api.js"
+
