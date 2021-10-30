@@ -101,6 +101,7 @@ module.exports = {
                 if (error) {
                     return callBack(error);
                 }
+                //-- results[0] will store the results.password from the controller
                 return callBack(null, results[0]);
             }
         );

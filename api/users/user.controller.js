@@ -119,16 +119,17 @@ module.exports = {
             if (!results) {
                 return res.json({
                     success: 0,
-                    message: "Invalid email or password"
+                    message: "Invalid email"
                 });
             }
-            //-- Check if password is correct
+            //-- If email exists, check if password is correct
+            //-- result = true if they
             const result = compareSync(body.password, results.password);
             if (result) {
                 results.password = undefined;
                 const jsontoken = sign( {result: results}, 
-                                            'JWT_KEY',
-                                            {expiresIn: '1h'} );
+                                        process.env.JWT_KEY,
+                                        {expiresIn: '1h'} );
                 return res.json({
                     success: 1,
                     message: "Login successful",
@@ -138,7 +139,7 @@ module.exports = {
             else {
                 return res.json({
                     success: 0,
-                    message: "Invalid email or password"
+                    message: "Invalid password"
                 });
             }
         });
